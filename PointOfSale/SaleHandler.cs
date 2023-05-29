@@ -12,13 +12,13 @@ public class SaleHandler {
         if (barcode == "")
             display.DisplayEmptyCode();
         else {
-            Product product = catalog.FindProductByCode(barcode);
+            Product? product = catalog.FindProductByCode(barcode);
             DisplayProductInfo(barcode, product);
         }
     }
 
-    private void DisplayProductInfo(string barcode, Product product) {
-        if (product == null)
+    private void DisplayProductInfo(string barcode, Product? product) {
+        if (product is null)
             display.DisplayProductNotFound(barcode);
         else
             display.DisplayPrice(product.Price);
