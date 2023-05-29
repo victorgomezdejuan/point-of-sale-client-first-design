@@ -43,4 +43,22 @@ public class SaleHandlerTests {
         catalogMock.Verify(d => d.FindProductByCode(productToBeFound.Code));
         displayMock.Verify(d => d.DisplayProductNotFound(productToBeFound.Code));
     }
+
+    [Fact]
+    public void EmptyBarcode() {
+        // Arrange
+        var catalogMock = new Mock<ICatalog>();
+        var displayMock = new Mock<IDisplay>();
+
+        var saleHandler = new SaleHandler(catalogMock.Object, displayMock.Object);
+
+        // Act
+        saleHandler.OnBarcode("");
+
+        // Assert
+        catalogMock.Verify(d => d.FindProductByCode(""), Times.Never);
+        displayMock.Verify(d => d.DisplayProductNotFound(""), Times.Never);
+        displayMock.Verify(d => d.DisplayPrice(It.IsAny<Price>()), Times.Never);
+        displayMock.Verify(d => d.DisplayEmptyCode());
+    }
 }

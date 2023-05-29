@@ -9,8 +9,15 @@ public class SaleHandler {
     }
 
     public void OnBarcode(string barcode) {
-        Product product = catalog.FindProductByCode(barcode);
+        if (barcode == "")
+            display.DisplayEmptyCode();
+        else {
+            Product product = catalog.FindProductByCode(barcode);
+            DisplayProductInfo(barcode, product);
+        }
+    }
 
+    private void DisplayProductInfo(string barcode, Product product) {
         if (product == null)
             display.DisplayProductNotFound(barcode);
         else
