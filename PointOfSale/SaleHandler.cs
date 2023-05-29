@@ -10,6 +10,10 @@ public class SaleHandler {
 
     public void OnBarcode(string barcode) {
         Product product = catalog.FindProductByCode(barcode);
-        display.DisplayPrice(product.Price);
+
+        if (product == null)
+            display.DisplayProductNotFound(barcode);
+        else
+            display.DisplayPrice(product.Price);
     }
 }
