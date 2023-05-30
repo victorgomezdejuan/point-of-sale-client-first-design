@@ -2,12 +2,18 @@
 
 namespace PointOfSaleTests;
 public class ConsoleDisplayTests {
+    private readonly StringWriter newOut;
+    private readonly ConsoleDisplay display;
+
+    public ConsoleDisplayTests() {
+        newOut = new StringWriter();
+        Console.SetOut(newOut);
+        display = new ConsoleDisplay();
+    }
+
     [Fact]
     public void DisplayPrice() {
         // Arrange
-        var newOut = new StringWriter();
-        Console.SetOut(newOut);
-        var display = new ConsoleDisplay();
         var price = new Price(77.55M);
 
         // Act
@@ -15,25 +21,19 @@ public class ConsoleDisplayTests {
 
         // Assert
         Assert.Equal("Price: $77.55", newOut.ToString().Trim());
-
-        // Cleanup
-        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()));
     }
 
     [Fact]
     public void DisplayProductNotFound() {
-        // Arrange
-        var newOut = new StringWriter();
-        Console.SetOut(newOut);
-        var display = new ConsoleDisplay();
-
         // Act
         display.DisplayProductNotFound("12345");
 
         // Assert
         Assert.Equal("Product not found: 12345", newOut.ToString().Trim());
+    }
 
-        // Cleanup
+    internal void Dispose() {
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()));
+        newOut.Dispose();
     }
 }
