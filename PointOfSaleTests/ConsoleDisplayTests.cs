@@ -14,7 +14,7 @@ public class ConsoleDisplayTests {
     [Fact]
     public void DisplayPrice() {
         // Arrange
-        var price = new Price(77.55M);
+        var price = Price.FromDecimal(77.55M);
 
         // Act
         display.DisplayPrice(price);
@@ -30,6 +30,15 @@ public class ConsoleDisplayTests {
 
         // Assert
         Assert.Equal("Product not found: 12345", newOut.ToString().Trim());
+    }
+
+    [Fact]
+    public void DisplayEmptyCode() {
+        // Act
+        display.DisplayEmptyCode();
+
+        // Assert
+        Assert.Equal("Empty barcode", newOut.ToString().Trim());
     }
 
     internal void Dispose() {

@@ -7,7 +7,7 @@ public class SaleHandlerTests {
     [Fact]
     public void ItemFound() {
         // Arrange
-        var productToBeFound = new Product("12345", new Price(77.55M));
+        var productToBeFound = new Product("12345", Price.FromDecimal(77.55M));
 
         var catalogMock = new Mock<ICatalog>();
         catalogMock.Setup(c => c.FindProductByCode(productToBeFound.Code)).Returns(productToBeFound);
@@ -27,7 +27,7 @@ public class SaleHandlerTests {
     [Fact]
     public void ItemNotFound() {
         // Arrange
-        var productToBeFound = new Product("11111", new Price(11.22M));
+        var productToBeFound = new Product("11111", Price.FromDecimal(11.22M));
 
         var catalogMock = new Mock<ICatalog>();
         catalogMock.Setup(c => c.FindProductByCode(productToBeFound.Code)).Returns((Product)null);

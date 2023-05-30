@@ -5,7 +5,7 @@ public class CatalogTests {
     [Fact]
     public void ProductFound() {
         // Arrange
-        var productToBeFound = new Product("12345", new Price(77.55M));
+        var productToBeFound = new Product("12345", Price.FromDecimal(77.55M));
 
         var catalog = new InMemoryCatalog(new List<Product> { productToBeFound });
 

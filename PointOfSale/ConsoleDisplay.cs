@@ -4,5 +4,5 @@ public class ConsoleDisplay : IDisplay {
 
     public void DisplayProductNotFound(string code) => Console.WriteLine($"Product not found: {code}");
 
-    public void DisplayEmptyCode() => throw new NotImplementedException();
+    public void DisplayEmptyCode() => Console.WriteLine("Empty barcode");
 }
