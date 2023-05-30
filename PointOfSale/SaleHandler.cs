@@ -1,7 +1,7 @@
 ﻿namespace PointOfSale;
 public class SaleHandler {
-    private ICatalog catalog;
-    private IDisplay display;
+    private readonly ICatalog catalog;
+    private readonly IDisplay display;
 
     public SaleHandler(ICatalog catalog, IDisplay display) {
         this.catalog = catalog;
