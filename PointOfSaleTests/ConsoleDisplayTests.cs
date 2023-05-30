@@ -19,4 +19,21 @@ public class ConsoleDisplayTests {
         // Cleanup
         Console.SetOut(new StreamWriter(Console.OpenStandardOutput()));
     }
+
+    [Fact]
+    public void DisplayProductNotFound() {
+        // Arrange
+        var newOut = new StringWriter();
+        Console.SetOut(newOut);
+        var display = new ConsoleDisplay();
+
+        // Act
+        display.DisplayProductNotFound("12345");
+
+        // Assert
+        Assert.Equal("Product not found: 12345", newOut.ToString().Trim());
+
+        // Cleanup
+        Console.SetOut(new StreamWriter(Console.OpenStandardOutput()));
+    }
 }
