@@ -1,4 +1,6 @@
-﻿namespace PointOfSale;
+﻿using PointOfSale.ValueObjects;
+
+namespace PointOfSale;
 public class InMemoryCatalog {
     private Dictionary<string, Product> productCatalog;
 

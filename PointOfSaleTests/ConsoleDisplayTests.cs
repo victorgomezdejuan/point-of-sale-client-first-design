@@ -1,4 +1,5 @@
 ﻿using PointOfSale;
+using PointOfSale.ValueObjects;
 
 namespace PointOfSaleTests;
 public class ConsoleDisplayTests {

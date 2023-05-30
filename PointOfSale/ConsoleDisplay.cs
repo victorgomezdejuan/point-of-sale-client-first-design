@@ -1,4 +1,7 @@
-﻿namespace PointOfSale;
+﻿using PointOfSale.Interfaces;
+using PointOfSale.ValueObjects;
+
+namespace PointOfSale;
 public class ConsoleDisplay : IDisplay {
     public void DisplayPrice(Price price) => Console.WriteLine($"Price: {price}");
 

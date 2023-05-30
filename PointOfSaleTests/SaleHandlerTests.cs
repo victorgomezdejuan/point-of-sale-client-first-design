@@ -1,5 +1,7 @@
 using Moq;
 using PointOfSale;
+using PointOfSale.Interfaces;
+using PointOfSale.ValueObjects;
 
 namespace PointOfSaleTests;
 
@@ -7,7 +9,7 @@ public class SaleHandlerTests {
     [Fact]
     public void ItemFound() {
         // Arrange
-        var productToBeFound = new Product("12345", Price.FromDecimal(77.55M));
+        var productToBeFound = Product.FromCodeAndPrice("12345", Price.FromDecimal(77.55M));
 
         var catalogMock = new Mock<ICatalog>();
         catalogMock.Setup(c => c.FindProductByCode(productToBeFound.Code)).Returns(productToBeFound);
@@ -27,7 +29,7 @@ public class SaleHandlerTests {
     [Fact]
     public void ItemNotFound() {
         // Arrange
-        var productToBeFound = new Product("11111", Price.FromDecimal(11.22M));
+        var productToBeFound = Product.FromCodeAndPrice("11111", Price.FromDecimal(11.22M));
 
         var catalogMock = new Mock<ICatalog>();
         catalogMock.Setup(c => c.FindProductByCode(productToBeFound.Code)).Returns((Product)null);

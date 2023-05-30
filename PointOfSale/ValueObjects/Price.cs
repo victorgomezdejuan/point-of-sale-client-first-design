@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace PointOfSale;
+namespace PointOfSale.ValueObjects;
 public class Price {
     private Price(decimal amount) => Amount = amount;
 

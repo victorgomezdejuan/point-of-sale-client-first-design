@@ -1,4 +1,7 @@
-﻿namespace PointOfSale;
+﻿using PointOfSale.Interfaces;
+using PointOfSale.ValueObjects;
+
+namespace PointOfSale;
 public class SaleHandler {
     private readonly ICatalog catalog;
     private readonly IDisplay display;

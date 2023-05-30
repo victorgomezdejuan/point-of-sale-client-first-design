@@ -1,11 +1,12 @@
 ﻿using PointOfSale;
+using PointOfSale.ValueObjects;
 
 namespace PointOfSaleTests;
 public class CatalogTests {
     [Fact]
     public void ProductFound() {
         // Arrange
-        var productToBeFound = new Product("12345", Price.FromDecimal(77.55M));
+        var productToBeFound = Product.FromCodeAndPrice("12345", Price.FromDecimal(77.55M));
 
         var catalog = new InMemoryCatalog(new List<Product> { productToBeFound });
 

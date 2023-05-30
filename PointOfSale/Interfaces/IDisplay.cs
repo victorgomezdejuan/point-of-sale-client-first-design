@@ -1,4 +1,6 @@
-﻿namespace PointOfSale;
+﻿using PointOfSale.ValueObjects;
+
+namespace PointOfSale.Interfaces;
 public interface IDisplay {
     void DisplayPrice(Price price);
 
